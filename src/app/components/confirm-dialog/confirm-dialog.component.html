@@ -1,0 +1,32 @@
+<div class="dialog-container">
+  <div>
+    <h2 mat-dialog-title class="warning-title">
+      <mat-icon class="warning-icon">warning</mat-icon>
+      Confirm Delete
+    </h2>
+    
+    <div mat-dialog-content>
+      <p>Are you sure you want to delete the following product?</p>
+      
+      <div class="product-info" *ngIf="data.product">
+        <h3>{{ data.product.name }}</h3>
+        <div class="product-details">
+          <div class="detail-item" *ngIf="data.product.data?.year">
+            <span class="label">Year:</span>
+            <span class="value">{{ data.product.data?.year }}</span>
+          </div>
+          <div class="detail-item" *ngIf="data.product.data?.price">
+            <span class="label">Price:</span>
+            <span class="value">£{{ data.product.data?.price }}</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-stroked-button (click)="cancel()">Cancel</button>
+      <button mat-raised-button color="warn" (click)="confirm()">Confirm Delete</button>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,100 @@
+@use '@angular/material' as mat;
+@import '../assets/scss/variables';
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Define a custom palette mapping to our variables
+$app-primary: (
+  50: lighten($primary, 40%),
+  100: lighten($primary, 30%),
+  200: lighten($primary, 20%),
+  300: lighten($primary, 10%),
+  400: lighten($primary, 5%),
+  500: $primary, // Main primary color
+  600: darken($primary, 5%),
+  700: darken($primary, 10%),
+  800: darken($primary, 15%),
+  900: darken($primary, 20%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$app-accent: (
+  50: lighten($secondary, 40%),
+  100: lighten($secondary, 30%),
+  200: lighten($secondary, 20%),
+  300: lighten($secondary, 10%),
+  400: lighten($secondary, 5%),
+  500: $secondary, // Main accent color
+  600: darken($secondary, 5%),
+  700: darken($secondary, 10%),
+  800: darken($secondary, 15%),
+  900: darken($secondary, 20%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$app-warn: (
+  50: lighten($error, 40%),
+  100: lighten($error, 30%),
+  200: lighten($error, 20%),
+  300: lighten($error, 10%),
+  400: lighten($error, 5%),
+  500: $error, // Main warn color
+  600: darken($error, 5%),
+  700: darken($error, 10%),
+  800: darken($error, 15%),
+  900: darken($error, 20%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+// Create the Material palettes
+$app-primary-palette: mat.define-palette($app-primary);
+$app-accent-palette: mat.define-palette($app-accent);
+$app-warn-palette: mat.define-palette($app-warn);
+
+// Create the theme
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: $app-primary-palette,
+    accent: $app-accent-palette,
+    warn: $app-warn-palette,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Apply the theme
+@include mat.all-component-themes($app-theme); 

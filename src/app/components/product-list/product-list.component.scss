@@ -1,0 +1,147 @@
+@import '../../../assets/scss/variables';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Roboto, sans-serif;
+  color: $dark-text;
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    
+    h1 {
+      color: $secondary;
+      margin: 0;
+      font-weight: 500;
+      font-size: 2rem;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: $primary;
+      }
+    }
+    
+    button {
+      mat-icon {
+        margin-right: 4px;
+      }
+    }
+  }
+  
+  .returned-json {
+    max-height:200px;
+    overflow: scroll;
+    background-color: $light-gray;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border-left: 4px solid $primary;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .error-message {
+    background-color: rgba($error, 0.1);
+    color: $error;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border-left: 4px solid $error;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .desktop-view, .mobile-view {
+    display: block;
+    transition: opacity 0.3s ease;
+    
+    &.hidden {
+      display: none;
+      opacity: 0;
+    }
+  }
+  
+  .loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: $tertiary;
+    animation: fadeIn 0.3s ease;
+    
+    mat-spinner {
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+  
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background-color: $light-gray;
+    border-radius: 8px;
+    animation: fadeIn 0.4s ease;
+    
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.25rem;
+      color: $secondary;
+    }
+    
+    button {
+      mat-icon {
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .product-container {
+    padding: 1rem;
+    
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      
+      h1 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

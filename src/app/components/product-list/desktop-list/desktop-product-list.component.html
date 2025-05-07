@@ -1,0 +1,25 @@
+<div class="product-grid">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Price</th>
+      <th>CPU Model</th>
+      <th>Hard Disk Size</th>
+      <th>Action</th>
+    </tr>
+  
+    <tr *ngFor="let product of products">
+      <td>{{ product.name }}</td>
+      <td>{{ product.data?.year }}</td>
+      <td>@if(product.data?.price){£}{{ product.data?.price }}</td>
+      <td>{{ product.data?.['CPU model'] }}</td>
+      <td>{{ product.data?.['Hard disk size'] }}</td>
+      <td>
+        <button title="Delete Product" mat-icon-button color="warn" (click)="confirmDelete(product)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

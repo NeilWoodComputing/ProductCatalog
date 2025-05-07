@@ -1,0 +1,38 @@
+<div class="product-cards">
+  <div class="product-card" *ngFor="let product of products">
+    <div class="card-header">
+      <h3>{{ product.name }}</h3>
+      <button title="Delete Product" mat-icon-button color="warn" class="delete-btn" (click)="confirmDelete(product)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    
+    <div class="card-content">
+
+      @if(productHasAttributes(product)){
+         <div class="detail-item" *ngIf="product.data?.year">
+        <span class="label">Year:</span>
+        <span class="value">{{ product.data?.year }}</span>
+      </div>
+      <div class="detail-item" *ngIf="product.data?.price">
+        <span class="label">Price:</span>
+        <span class="value">£{{ product.data?.price }}</span>
+      </div>
+      <div class="detail-item" *ngIf="product.data?.['CPU model']">
+        <span class="label">CPU Model:</span>
+        <span class="value">{{ product.data?.['CPU model'] }}</span>
+      </div>
+      <div class="detail-item" *ngIf="product.data?.['Hard disk size']">
+        <span class="label">Hard Disk Size:</span>
+        <span class="value">{{ product.data?.['Hard disk size'] }}</span>
+      </div>    
+      } @else {
+        <div class="detail-item">
+          <span class="label">No data available</span>
+        </div>
+      }
+ 
+    </div>
+  </div>
+
+</div>

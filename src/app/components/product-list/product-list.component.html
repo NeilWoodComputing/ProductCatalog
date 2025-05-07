@@ -1,0 +1,49 @@
+<div class="product-container">
+  <div class="header">
+    <h1>Product List</h1>
+    <button mat-raised-button color="primary" (click)="openAddModal()">
+      <mat-icon>add</mat-icon> Add Product
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="returned-json" *ngIf="returnedJson">
+    <h2>Returned JSON</h2>
+    <pre>{{ returnedJson }}</pre>
+  </div>
+
+  <!-- Desktop view (hidden on mobile) -->
+  <div class="desktop-view" [class.hidden]="isMobile">
+    <app-desktop-product-list 
+      #desktopGrid
+      [products]="products"
+      (deleteProduct)="openDeleteModal($event)">
+    </app-desktop-product-list>
+  </div>
+
+  <!-- Mobile view (hidden on desktop) -->
+  <div class="mobile-view" [class.hidden]="!isMobile">
+    <app-mobile-product-list 
+      #mobileGrid
+      [products]="products"
+      (deleteProduct)="openDeleteModal($event)">
+    </app-mobile-product-list>
+  </div>
+
+  <div #lazyLoadTrigger class="lazy-load-trigger"></div>
+
+  <div class="loading-indicator" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Loading products...</p>
+  </div>
+
+  <div class="empty-state" *ngIf="!loading && products.length === 0">
+    <p>No products found.</p>
+    <button mat-raised-button color="primary" (click)="openAddModal()">
+      <mat-icon>add</mat-icon> Add Product
+    </button>
+  </div>
+</div> 

@@ -1,0 +1,36 @@
+// Color Palette
+// Primary colors from C&C site
+$primary: #01C2F3;
+$secondary: #2B59A4;
+$tertiary: #237DBF;
+
+// C&C nav green
+$nav-green: #72b453;
+
+// Neutral colors
+$white: #ffffff;
+$black: #000000;
+$light-gray: #f5f5f5;
+$medium-gray: #dddddd;
+$dark-gray: #666666;
+$dark-text: #333333;
+
+// State colors
+$error: #f44336;
+$success: #4CAF50;
+$warning: #ff9800;
+$info: #2196F3;
+
+// Gradients
+$primary-gradient: linear-gradient(135deg, $primary 0%, $tertiary 100%);
+$secondary-gradient: linear-gradient(135deg, $secondary 0%, $tertiary 100%);
+
+// Shadows
+$box-shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+$box-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$box-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+// Function to darken/lighten colors for hover states
+@function color-variant($color, $percentage: 10%) {
+  @return darken($color, $percentage);
+} 

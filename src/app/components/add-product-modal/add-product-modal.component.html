@@ -1,0 +1,67 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Add New Product</h2>
+  
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="returned-json" *ngIf="returnedJson">
+    <h2>Returned JSON</h2>
+    <pre>{{ returnedJson }}</pre>
+  </div>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+    <div mat-dialog-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Product Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter product name" maxlength="50">
+        <mat-error *ngIf="isInvalid('name')">
+          {{ getErrorMessage('name') }}
+        </mat-error>
+      </mat-form-field>
+      
+      <div formGroupName="data">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Year</mat-label>
+          <input matInput formControlName="year" placeholder="2023" maxlength="4">
+          <mat-error *ngIf="isInvalid('year', true)">
+            {{ getErrorMessage('year', true) }}
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price" placeholder="£1,200.99">
+          <mat-error *ngIf="isInvalid('price', true)">
+            {{ getErrorMessage('price', true) }}
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>CPU Model</mat-label>
+          <input matInput formControlName="CPU model" placeholder="Enter CPU model" maxlength="25">
+          <mat-error *ngIf="isInvalid('CPU model', true)">
+            {{ getErrorMessage('CPU model', true) }}
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Hard Disk Size</mat-label>
+          <input matInput formControlName="Hard disk size" placeholder="1 TB" maxlength="25">
+          <mat-error *ngIf="isInvalid('Hard disk size', true)">
+            {{ getErrorMessage('Hard disk size', true) }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div mat-dialog-actions class="dialog-actions">
+      <button mat-stroked-button type="button" [disabled]="loading" (click)="onClose()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+        <span *ngIf="!loading">Add Product</span>
+        <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+      </button>
+    </div>
+  </form>
+  
+</div> 
