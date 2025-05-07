@@ -5,9 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../models/product.model';
+import { ApiResponse, Product } from '../../models/product.model';
 import { AddProductModalComponent } from '../add-product-modal/add-product-modal.component';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ConfirmDeleteProductComponent } from '../confirm-delete-product-modal/confirm-delete-product.component';
 import { DesktopProductListComponent } from './desktop-list/desktop-product-list.component';
 import { MobileProductListComponent } from './mobile-list/mobile-product-list.component';
 
@@ -146,36 +146,19 @@ export class ProductListComponent implements OnInit {
   }
   
   openDeleteModal(product: Product): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmDeleteProductComponent, {
       data: { product, response: null }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.deleteProduct(product);
-      }
+    dialogRef.afterClosed().subscribe(response => {
+      this.removeProduct(response);
     });
   }
   
-  deleteProduct(product: Product): void {
-    if (!product || !product.id) return;
-    
-    this.loading = true;
-    
-    this.productService.deleteProduct(product.id)
-      .pipe()
-      .subscribe({
-        next: (response) => {
-          this.products = this.products.filter(p => p.id !== product.id);
-          this.logJsonObject(response);
-          this.loading = false;
-        },
-        error: (err) => {
-          this.error = err.error.error;
-          this.logJsonObject(err);
-          this.loading = false;
-        }
-      });
+  removeProduct(response: {response: ApiResponse, product: Product}): void {
+    this.products = this.products.filter(p => p.id !== response.product.id);
+    this.logJsonObject(response.response);
+    this.loading = false;
   }
 
   private logJsonObject(jsonObject: any){

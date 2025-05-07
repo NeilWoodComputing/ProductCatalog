@@ -4,6 +4,15 @@
       <mat-icon class="warning-icon">warning</mat-icon>
       Confirm Delete
     </h2>
+
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+  
+    <div class="returned-json" *ngIf="returnedJson">
+      <h2>Returned JSON</h2>
+      <pre>{{ returnedJson }}</pre>
+    </div>
     
     <div mat-dialog-content>
       <p>Are you sure you want to delete the following product?</p>
@@ -17,7 +26,7 @@
           </div>
           <div class="detail-item" *ngIf="data.product.data?.price">
             <span class="label">Price:</span>
-            <span class="value">£{{ data.product.data?.price }}</span>
+            <span class="value">{{ data.product.data?.price }}</span>
           </div>
         </div>
       </div>
@@ -25,8 +34,11 @@
     </div>
     
     <div mat-dialog-actions class="dialog-actions">
-      <button mat-stroked-button (click)="cancel()">Cancel</button>
-      <button mat-raised-button color="warn" (click)="confirm()">Confirm Delete</button>
+      <button mat-stroked-button (click)="closeModal()">Cancel</button>
+      <button mat-raised-button color="warn" (click)="confirm()" [disabled]="loading">
+        <span *ngIf="!loading">Confirm Delete</span>
+        <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+      </button>
     </div>
   </div>
 </div> 

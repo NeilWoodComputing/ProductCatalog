@@ -12,7 +12,7 @@
     <tr *ngFor="let product of products">
       <td>{{ product.name }}</td>
       <td>{{ product.data?.year }}</td>
-      <td>@if(product.data?.price){£}{{ product.data?.price }}</td>
+      <td>{{ product.data?.price }}</td>
       <td>{{ product.data?.['CPU model'] }}</td>
       <td>{{ product.data?.['Hard disk size'] }}</td>
       <td>

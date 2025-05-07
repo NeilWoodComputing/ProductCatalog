@@ -1,47 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProductService } from '../../services/product.service';
-import { Product, ApiResponse } from '../../models/product.model';
+import { Product } from '../../models/product.model';
+import { AbstractProductModalComponent } from '../abstract-components/abstract-product-modal.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-product-modal',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     ReactiveFormsModule, 
-    MatDialogModule, 
-    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatDialogModule,    
+    MatButtonModule
   ],
   templateUrl: './add-product-modal.component.html',
-  styleUrls: ['./add-product-modal.component.scss']
+  styleUrls: [ '../../../assets/scss/_modal-styles.scss']
 })
-export class AddProductModalComponent implements OnInit {
+export class AddProductModalComponent extends AbstractProductModalComponent implements OnInit {
   productForm!: FormGroup;
-  loading = false;
-  error = '';
-  response: ApiResponse | null = null;
-  returnedJson = '';
-
+ 
   constructor(
     private fb: FormBuilder,
-    private productService: ProductService,
-    public dialogRef: MatDialogRef<AddProductModalComponent>
+    productService: ProductService,
+    dialogRef: MatDialogRef<AddProductModalComponent>
   ) {
-    // Prevent dialog from closing when Enter key is pressed
-    this.dialogRef.keydownEvents().subscribe(event => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-      }
-    });
+    super(productService, dialogRef);
   }
   
   ngOnInit(): void {
@@ -58,10 +52,6 @@ export class AddProductModalComponent implements OnInit {
         'Hard disk size': ['', [Validators.required, Validators.maxLength(25)]]
       })
     });
-  }
-  
-  onClose(): void {
-    this.dialogRef.close();
   }
   
   onSubmit(): void {

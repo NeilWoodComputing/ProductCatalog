@@ -56,7 +56,7 @@
     </div>
     
     <div mat-dialog-actions class="dialog-actions">
-      <button mat-stroked-button type="button" [disabled]="loading" (click)="onClose()">Cancel</button>
+      <button mat-stroked-button type="button" [disabled]="loading" (click)="closeModal()">Cancel</button>
       <button mat-raised-button color="primary" type="submit" [disabled]="loading">
         <span *ngIf="!loading">Add Product</span>
         <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
