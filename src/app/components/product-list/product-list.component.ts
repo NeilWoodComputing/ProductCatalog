@@ -10,7 +10,7 @@ import { AddProductModalComponent } from '../add-product-modal/add-product-modal
 import { ConfirmDeleteProductComponent } from '../confirm-delete-product-modal/confirm-delete-product.component';
 import { DesktopProductListComponent } from './desktop-list/desktop-product-list.component';
 import { MobileProductListComponent } from './mobile-list/mobile-product-list.component';
-
+import { ProductViewComponent } from '../product-view/product-view.component';
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -21,7 +21,8 @@ import { MobileProductListComponent } from './mobile-list/mobile-product-list.co
     MatIconModule,
     MatProgressSpinnerModule,
     DesktopProductListComponent,
-    MobileProductListComponent
+    MobileProductListComponent,
+    ProductViewComponent
   ],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
@@ -83,9 +84,9 @@ export class ProductListComponent implements OnInit {
         next: (products) => {
           // Since the API doesn't support pagination, handle it client-side for the demo
           const allProducts = products;
+          this.hasMore = allProducts.length > this.productLimit;
           this.products = allProducts.slice(0, this.productLimit);
           this.loading = false;
-          this.hasMore = allProducts.length > this.productLimit;
           this.logJsonObject(products);
         },
         error: (err) => {

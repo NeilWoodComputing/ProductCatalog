@@ -7,6 +7,7 @@ import { Product, ApiResponse } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
 import { AbstractProductModalComponent } from '../abstract-components/abstract-product-modal.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ProductViewComponent } from '../product-view/product-view.component';
 
 export interface ConfirmDialogData {
   product: Product;
@@ -21,7 +22,8 @@ export interface ConfirmDialogData {
     MatDialogModule,
     MatButtonModule,
     MatIconModule, 
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ProductViewComponent
   ],
   templateUrl: './confirm-delete-product.component.html',
   styleUrls: ['./confirm-delete-product.component.scss', '../../../assets/scss/_modal-styles.scss']

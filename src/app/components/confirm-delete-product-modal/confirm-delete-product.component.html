@@ -19,16 +19,9 @@
       
       <div class="product-info" *ngIf="data.product">
         <h3>{{ data.product.name }}</h3>
-        <div class="product-details">
-          <div class="detail-item" *ngIf="data.product.data?.year">
-            <span class="label">Year:</span>
-            <span class="value">{{ data.product.data?.year }}</span>
-          </div>
-          <div class="detail-item" *ngIf="data.product.data?.price">
-            <span class="label">Price:</span>
-            <span class="value">{{ data.product.data?.price }}</span>
-          </div>
-        </div>
+
+        <app-product-view [product]="data.product"></app-product-view>
+
       </div>
       
     </div>

@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Product } from '../../../models/product.model';
-
+import { ProductViewComponent } from '../../product-view/product-view.component';
 @Component({
   selector: 'app-mobile-product-list',
   standalone: true,
@@ -12,7 +12,8 @@ import { Product } from '../../../models/product.model';
     CommonModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    ProductViewComponent
   ],
   templateUrl: './mobile-product-list.component.html',
   styleUrls: ['./mobile-product-list.component.scss']

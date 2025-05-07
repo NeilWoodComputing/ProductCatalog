@@ -1,0 +1,26 @@
+@import '../../../assets/scss/variables';
+    
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  .label {
+    font-weight: 500;
+    color: $tertiary;
+    flex: 1;
+  }
+  
+  .value {
+    color: $dark-text;
+    flex: 1;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

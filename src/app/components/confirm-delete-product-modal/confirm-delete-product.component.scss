@@ -13,47 +13,22 @@
       color: $warning;
     }
   }
-
-  .mat-dialog-content {
-    max-height: 60vh;
+  
+  .product-info {
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
     
-    .product-info {
-      background-color: $light-gray;
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
-      
-      h3 {
-        margin-top: 0;
-        margin-bottom: 0.75rem;
-        color: $secondary;
-        font-weight: 500;
-        font-size: 1.25rem;
-      }
-      
-      .product-details {
-        .detail-item {
-          display: flex;
-          justify-content: space-between;
-          padding: 0.5rem 0;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-          
-          &:last-child {
-            border-bottom: none;
-          }
-          
-          .label {
-            font-weight: 500;
-            color: $tertiary;
-          }
-          
-          .value {
-            color: $dark-text;
-          }
-        }
-      }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: $secondary;
+      font-weight: 500;
+      font-size: 1.25rem;
     }
+    
   }
+  
 }
 
 // Animations
