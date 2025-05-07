@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@import '../assets/scss/variables';
+@import '../../assets/scss/variables';
 
 // Include the common styles for Angular Material
 @include mat.core();

@@ -227,7 +227,7 @@ describe('AddProductModalComponent', () => {
 
   describe('Dialog Interaction', () => {
     it('should close dialog when onClose is called', () => {
-      component.onClose();
+      component.closeModal();
       expect(dialogRefSpy.close).toHaveBeenCalled();
     });
   });
