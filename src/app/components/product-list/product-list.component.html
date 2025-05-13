@@ -16,7 +16,7 @@
   </div>
 
   <!-- Desktop view (hidden on mobile) -->
-  <div class="desktop-view" [class.hidden]="isMobile">
+  <div class="desktop-view" *ngIf="!isMobile">
     <app-desktop-product-list 
       #desktopGrid
       [products]="products"
@@ -25,7 +25,7 @@
   </div>
 
   <!-- Mobile view (hidden on desktop) -->
-  <div class="mobile-view" [class.hidden]="!isMobile">
+  <div class="mobile-view" *ngIf="isMobile">
     <app-mobile-product-list 
       #mobileGrid
       [products]="products"
@@ -36,8 +36,7 @@
   <div #lazyLoadTrigger class="lazy-load-trigger"></div>
 
   <div class="loading-indicator" *ngIf="loading">
-    <mat-spinner diameter="40"></mat-spinner>
-    <p>Loading products...</p>
+    <app-loader></app-loader>
   </div>
 
   <div class="empty-state" *ngIf="!loading && products.length === 0">

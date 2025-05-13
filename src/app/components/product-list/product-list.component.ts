@@ -11,6 +11,7 @@ import { ConfirmDeleteProductComponent } from '../confirm-delete-product-modal/c
 import { DesktopProductListComponent } from './desktop-list/desktop-product-list.component';
 import { MobileProductListComponent } from './mobile-list/mobile-product-list.component';
 import { ProductViewComponent } from '../product-view/product-view.component';
+import { LoaderComponent } from '../loader/loader.component';
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -22,7 +23,8 @@ import { ProductViewComponent } from '../product-view/product-view.component';
     MatProgressSpinnerModule,
     DesktopProductListComponent,
     MobileProductListComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    LoaderComponent
   ],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']

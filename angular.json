@@ -32,6 +32,11 @@
               "src/assets/scss/custom-theme.scss",
               "src/assets/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./src/assets/scss"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
